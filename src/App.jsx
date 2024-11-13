@@ -1,9 +1,7 @@
-import { useState } from "react";
+import React from "react";
 
-function App() {
-  const [count, setCount] = useState(0);
-
-  return <p>Starting from scratch</p>;
-}
+const App = () => {
+  return <p>Hello World!</p>;
+};
 
 export default App;
