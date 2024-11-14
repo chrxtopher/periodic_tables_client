@@ -29,15 +29,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <App />,
-        loader: "",
-        children: [
-          {
-            path: "dashboard",
-            element: <Dashboard date={today()} />,
-            loader: "",
-            children: [],
-          },
-        ],
+      },
+      {
+        path: "/dashboard",
+        element: <Dashboard />,
       },
     ],
   },
