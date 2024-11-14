@@ -1,9 +1,11 @@
 import * as React from "react";
-import * as ReactDOM from "react-dom";
+import * as ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import "./index.css";
 import App from "./App.jsx";
 import Menu from "./components/Menu.jsx";
+import Dashboard from "./pages/Dashboard.jsx";
+import { today } from "./utility/date-time.js";
 
 const Layout = () => {
   return (
@@ -28,7 +30,14 @@ const router = createBrowserRouter([
         path: "/",
         element: <App />,
         loader: "",
-        children: [],
+        children: [
+          {
+            path: "dashboard",
+            element: <Dashboard date={today()} />,
+            loader: "",
+            children: [],
+          },
+        ],
       },
     ],
   },
