@@ -3,6 +3,9 @@ const API_BASE_URL = import.meta.env.API_BASE_URL || "http://localhost:3500";
 const headers = new Headers();
 headers.append("Content-Type", "application/json");
 
+import formatReservationDate from "./format-reservation-date";
+import formatReservationTime from "./format-reservation-time";
+
 /**
  * Fetch `json` from the specified URL and handle error status codes and ignore `AbortError`s
  *
