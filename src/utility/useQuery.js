@@ -7,8 +7,8 @@
 
 import { useLocation } from "react-router-dom";
 
-function useQuery() {
+const useQuery = () => {
   return new URLSearchParams(useLocation().search);
-}
+};
 
 export default useQuery;
