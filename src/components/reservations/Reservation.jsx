@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { cancelReservation, updateReservation } from "../../utility/api";
+import { cancelReservation, updateReservationStatus } from "../../utility/api";
 
 const Reservation = ({ reservation }) => {
   const reservation_id = reservation.reservation_id;
