@@ -5,7 +5,7 @@ import "./index.css";
 import App from "./App.jsx";
 import Menu from "./components/Menu.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
-import { today } from "./utility/date-time.js";
+import SearchReservation from "./pages/SearchReservation.jsx";
 
 const Layout = () => {
   return (
@@ -33,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard",
         element: <Dashboard />,
+      },
+      {
+        path: "/search",
+        element: <SearchReservation />,
       },
     ],
   },
