@@ -39,9 +39,9 @@ const Dashboard = () => {
   useEffect(loadDashboard, [date]);
   useEffect(loadTables, []);
 
-  // useEffect(() => {
-  //   navigateTo(`/dashboard?date=${date}`);
-  // }, [date, navigateTo]);
+  useEffect(() => {
+    navigateTo(`/dashboard?date=${date}`);
+  }, [date, navigateTo]);
 
   return (
     <main>
