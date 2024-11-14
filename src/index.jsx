@@ -6,6 +6,7 @@ import App from "./App.jsx";
 import Menu from "./components/Menu.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 import SearchReservation from "./pages/SearchReservation.jsx";
+import NewReservation from "./pages/NewReservation.jsx";
 
 const Layout = () => {
   return (
@@ -37,6 +38,14 @@ const router = createBrowserRouter([
       {
         path: "/search",
         element: <SearchReservation />,
+      },
+      {
+        path: "/reservations",
+        element: <App />,
+      },
+      {
+        path: "/reservations/new",
+        element: <NewReservation />,
       },
     ],
   },
