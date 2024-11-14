@@ -1,15 +1,15 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { cancelReservation, updateReservation } from "../../utility/api";
 
 const Reservation = ({ reservation }) => {
   const reservation_id = reservation.reservation_id;
   const abortController = new AbortController();
-  const history = useHistory();
+  const navigateTo = useNavigate();
 
   const handleSeatClick = async () => {
     await updateReservationStatus(reservation, abortController.signal);
-    history.go();
+    navigateTo(-1);
   };
 
   const handleCancelClick = async () => {
@@ -22,7 +22,7 @@ const Reservation = ({ reservation }) => {
         reservation.reservation_id,
         abortController.signal
       );
-      history.go();
+      navigateTo(-1);
     }
   };
 
