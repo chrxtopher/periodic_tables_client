@@ -1,4 +1,4 @@
-const API_BASE_URL = import.meta.env.API_BASE_URL || "http://localhost:3500";
+const API_BASE_URL = import.meta.env.API_BASE_URL || "http://localhost:5050";
 
 const headers = new Headers();
 headers.append("Content-Type", "application/json");
