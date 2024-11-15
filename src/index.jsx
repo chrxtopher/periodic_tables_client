@@ -7,6 +7,7 @@ import Menu from "./components/Menu.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 import SearchReservation from "./pages/SearchReservation.jsx";
 import NewReservation from "./pages/NewReservation.jsx";
+import SeatReservation from "./pages/SeatReservation.jsx";
 
 const Layout = () => {
   return (
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
       {
         path: "/reservations/new",
         element: <NewReservation />,
+      },
+      {
+        path: "/reservations/:reservation_id/seat",
+        element: <SeatReservation />,
       },
     ],
   },
