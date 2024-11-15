@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { listTables, seatReservation } from "../utility/api";
 import { useParams, useNavigate } from "react-router-dom";
 import ErrorAlert from "../components/errors/ErrorAlert";
+import { today } from "../utility/date-time";
 
 const SeatReservation = () => {
   const navigateTo = useNavigate();
@@ -45,7 +46,7 @@ const SeatReservation = () => {
         Number(table.table_id),
         abortController.signal
       );
-      navigateTo(-1);
+      navigateTo(`/dashboard?date=${today()}`);
     } catch (error) {
       setError(error);
     }
