@@ -8,11 +8,11 @@ const Table = ({ table }) => {
   const navigateTo = useNavigate();
   const status = table.reservation_id ? "occupied" : "open";
 
-  const handleClearTable = async (table_id) => {
+  const handleClearTable = async (table_id, reservation_id) => {
     if (window.confirm("Confirm this table is ready to seat new guests")) {
       try {
-        await clearTable(table_id);
-        navigateTo(-1);
+        await clearTable(table_id, reservation_id);
+        navigateTo(0);
       } catch (error) {
         setError(error);
       }
@@ -35,7 +35,9 @@ const Table = ({ table }) => {
             {table.reservation_id && (
               <button
                 type="submit"
-                onClick={() => handleClearTable(table.table_id)}
+                onClick={() =>
+                  handleClearTable(table.table_id, table.reservation_id)
+                }
                 className="btn btn-primary border border-dark shadow"
               >
                 Clear
