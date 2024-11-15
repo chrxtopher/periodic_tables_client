@@ -122,10 +122,12 @@ export async function cancelReservation(reservation_id, signal) {
   return await fetchJson(url, options);
 }
 
-export async function clearTable(table_id) {
+export async function clearTable(table_id, reservation_id) {
   const url = `${API_BASE_URL}/tables/${table_id}/seat`;
   const options = {
     method: "DELETE",
+    headers,
+    body: JSON.stringify({ data: { reservation_id } }),
   };
   return await fetchJson(url, options);
 }
