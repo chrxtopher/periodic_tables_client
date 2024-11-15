@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { listReservations, listTables } from "../utility/api";
 import { today, previous, next } from "../utility/date-time";
 import ErrorAlert from "../components/errors/ErrorAlert";
+import Table from "../components/tables/Table";
 import ReservationsList from "../components/reservations/ReservationList";
 
 const Dashboard = () => {
@@ -77,7 +78,7 @@ const Dashboard = () => {
       <section className="d-flex flex-wrap justify-content-center">
         {tables &&
           tables.map((table) => {
-            return <TablesList key={table.table_id} table={table} />;
+            return <Table key={table.table_id} table={table} />;
           })}
       </section>
     </main>
