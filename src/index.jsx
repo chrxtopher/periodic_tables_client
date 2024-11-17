@@ -48,11 +48,15 @@ const router = createBrowserRouter([
       },
       {
         path: "/reservations/new",
-        element: <NewReservation />,
+        element: <NewReservation updating={false} />,
       },
       {
         path: "/reservations/:reservation_id/seat",
         element: <SeatReservation />,
+      },
+      {
+        path: "/reservations/:reservation_id/edit",
+        element: <NewReservation updating={true} />,
       },
     ],
   },
