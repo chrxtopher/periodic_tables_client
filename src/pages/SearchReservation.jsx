@@ -5,11 +5,11 @@ import ErrorAlert from "../components/errors/ErrorAlert";
 
 const SearchReservation = () => {
   const [reservations, setReservations] = useState([]);
-  const [searchNumber, setSearchNumber] = useState("");
+  const [lastName, setLastName] = useState("");
   const [error, setError] = useState(null);
 
   const handleChange = (event) => {
-    setSearchNumber(Number(event.target.value));
+    setLastName(event.target.value);
   };
 
   const handleSubmit = async (event) => {
@@ -17,7 +17,7 @@ const SearchReservation = () => {
     const abortController = new AbortController();
     try {
       const data = await listReservations(
-        { mobile_number: searchNumber },
+        { last_name: lastName },
         abortController.signal
       );
       setReservations(data);
@@ -33,14 +33,14 @@ const SearchReservation = () => {
       <h1 className="text-center display-4 mt-3">Search for a Reservation</h1>
       <ErrorAlert error={error} />
       <form onSubmit={handleSubmit} className="my-5">
-        <label className="m-2">Mobile Number</label>
+        <label className="m-2">Customer's Last Name</label>
         <div className="d-flex">
           <input
             name="mobile_number"
             onChange={handleChange}
             className="form-control shadow"
             type="text"
-            placeholder="Enter a customer's phone number"
+            placeholder="Enter a customer's last name"
             required
           />
           <button
