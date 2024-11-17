@@ -7,6 +7,7 @@ const SearchReservation = () => {
   const [reservations, setReservations] = useState([]);
   const [lastName, setLastName] = useState("");
   const [error, setError] = useState(null);
+  const [searchingStatus, setSearchingStatus] = useState("");
 
   const handleChange = (event) => {
     setLastName(event.target.value);
@@ -14,14 +15,18 @@ const SearchReservation = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setReservations([]);
+    setSearchingStatus("searching");
     const abortController = new AbortController();
     try {
       const data = await listReservations(
         { last_name: lastName },
         abortController.signal
       );
+      setSearchingStatus("complete");
       setReservations(data);
     } catch (error) {
+      setSearchingStatus("complete");
       setError(error);
     }
 
@@ -52,10 +57,13 @@ const SearchReservation = () => {
         </div>
       </form>
       <div className="d-flex flex-wrap justify-content-center">
-        {reservations.length !== 0 && (
-          <ReservationList reservations={reservations} isSearching={true} />
+        {searchingStatus === "searching" && (
+          <h3 className="text-center">searching...</h3>
         )}
-        {reservations.length === 0 && (
+        {reservations.length !== 0 && searchingStatus === "complete" && (
+          <ReservationList reservations={reservations} />
+        )}
+        {reservations.length === 0 && searchingStatus === "complete" && (
           <h3 className="text-center">No reservations found</h3>
         )}
       </div>
