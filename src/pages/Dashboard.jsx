@@ -52,7 +52,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     navigateTo(`/dashboard?date=${date}`);
-  }, [date, navigateTo]);
+  }, [date]);
 
   return (
     <main>
