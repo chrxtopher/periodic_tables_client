@@ -43,7 +43,7 @@ const SeatReservation = () => {
     try {
       await seatReservation(
         reservation_id,
-        Number(table.table_id),
+        table.table_id,
         abortController.signal
       );
       navigateTo(`/dashboard?date=${today()}`);
