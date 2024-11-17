@@ -74,7 +74,7 @@ const SeatReservation = () => {
           </select>
           <div className="d-flex justify-content-center my-5">
             <button
-              onClick={() => navigateTo("/dashboard")}
+              onClick={() => navigateTo(-1)}
               className="btn btn-lg btn-danger border border-dark mx-2 shadow"
             >
               Cancel
