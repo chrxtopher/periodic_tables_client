@@ -8,8 +8,7 @@ const Reservation = ({ reservation }) => {
   const navigateTo = useNavigate();
 
   const handleSeatClick = async () => {
-    await updateReservationStatus(reservation, abortController.signal);
-    navigateTo(-1);
+    navigateTo(`/reservations/${reservation_id}/seat`);
   };
 
   const handleCancelClick = async () => {
