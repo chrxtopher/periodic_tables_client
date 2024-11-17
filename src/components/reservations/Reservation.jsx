@@ -22,7 +22,7 @@ const Reservation = ({ reservation }) => {
         reservation.reservation_id,
         abortController.signal
       );
-      navigateTo(-1);
+      navigateTo(0);
     }
   };
 
