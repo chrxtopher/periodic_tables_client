@@ -156,7 +156,6 @@ const ReservationForm = () => {
                 value={formData.reservation_date}
                 required
               />
-              <small className="m-2">Closed on Tuesday</small>
             </div>
             <div className="col mb-3">
               <label className="ml-2" htmlFor="reservationTime">
