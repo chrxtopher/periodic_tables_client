@@ -41,10 +41,7 @@ const Reservation = ({ reservation }) => {
         <p className="card-text text-center">
           <strong>Time:</strong> {reservation.reservation_time}
         </p>
-        <p
-          data-reservation-id-status={reservation.reservation_id}
-          className="card-text text-center"
-        >
+        <p className="card-text text-center">
           <strong>Status: </strong> {reservation.status.toUpperCase()}
         </p>
         {reservation.status === "booked" && (
@@ -66,7 +63,6 @@ const Reservation = ({ reservation }) => {
             </a>
             <button
               onClick={handleCancelClick}
-              data-reservation-id-cancel={reservation.reservation_id}
               className="btn btn-danger border border-dark shadow mx-2"
             >
               Cancel
