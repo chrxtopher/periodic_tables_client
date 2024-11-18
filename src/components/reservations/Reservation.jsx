@@ -46,22 +46,22 @@ const Reservation = ({ reservation }) => {
         </p>
         {reservation.status === "booked" && (
           <div className="d-flex justify-content-center">
-            <a href={`/reservations/${reservation_id}/seat`}>
-              <button
-                type="submit"
-                onClick={handleSeatClick}
-                className="btn btn-success border border-dark shadow mx-2"
-              >
-                Seat
-              </button>
-            </a>
-
-            <a href={`/reservations/${reservation_id}/edit`}>
-              <button className="btn btn-warning border border-dark shadow mx-2">
-                Edit
-              </button>
-            </a>
             <button
+              type="button"
+              onClick={handleSeatClick}
+              className="btn btn-success border border-dark shadow mx-2"
+            >
+              Seat
+            </button>
+            <button
+              type="button"
+              className="btn btn-warning border border-dark shadow mx-2"
+              onClick={() => navigateTo(`/reservations/${reservation_id}/edit`)}
+            >
+              Edit
+            </button>
+            <button
+              type="button"
               onClick={handleCancelClick}
               className="btn btn-danger border border-dark shadow mx-2"
             >
