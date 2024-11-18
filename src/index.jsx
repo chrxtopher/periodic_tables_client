@@ -8,6 +8,7 @@ import Dashboard from "./pages/Dashboard.jsx";
 import SearchReservation from "./pages/SearchReservation.jsx";
 import NewReservation from "./pages/NewReservation.jsx";
 import SeatReservation from "./pages/SeatReservation.jsx";
+import NewTable from "./pages/NewTable.jsx";
 
 const Layout = () => {
   return (
@@ -57,6 +58,10 @@ const router = createBrowserRouter([
       {
         path: "/reservations/:reservation_id/edit",
         element: <NewReservation updating={true} />,
+      },
+      {
+        path: "/tables/new",
+        element: <NewTable />,
       },
     ],
   },
