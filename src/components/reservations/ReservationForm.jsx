@@ -64,12 +64,12 @@ const ReservationForm = () => {
     try {
       if (reservation_id) {
         await updateReservation(formData, abortController.signal);
-        navigateTo(`/dashboard?date=${formData.reservation_date}`);
         setFormData({ ...emptyReservationForm });
+        navigateTo(`/dashboard?date=${formData.reservation_date}`);
       } else {
         await createReservation(formData, abortController.signal);
-        navigateTo(`/dashboard?date=${formData.reservation_date}`);
         setFormData({ ...emptyReservationForm });
+        navigateTo(`/dashboard?date=${formData.reservation_date}`);
       }
     } catch (error) {
       setError(error);
