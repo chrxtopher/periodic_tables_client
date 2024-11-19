@@ -1,11 +1,28 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { cancelReservation, updateReservationStatus } from "../../utility/api";
+import { cancelReservation } from "../../utility/api";
 
 const Reservation = ({ reservation }) => {
   const reservation_id = reservation.reservation_id;
   const abortController = new AbortController();
   const navigateTo = useNavigate();
+
+  const twelveHourTime = (reservation_time) => {
+    let meridiem = "AM";
+    let hours = new Date(`2000-01-01 ${reservation_time}`).getHours();
+    let minutes = new Date(`2000-01-01 ${reservation_time}`).getMinutes();
+
+    if (hours - 12 === 0) {
+      meridiem = "PM";
+    } else if (hours - 12 > 0) {
+      hours -= 12;
+      meridiem = "PM";
+    }
+
+    if (minutes === 0) minutes = "00";
+
+    return `${hours}:${minutes} ${meridiem}`;
+  };
 
   const handleSeatClick = async () => {
     navigateTo(`/reservations/${reservation_id}/seat`);
@@ -29,7 +46,7 @@ const Reservation = ({ reservation }) => {
     <div className="card bg-light border-dark m-4 shadow">
       <div className="card-body">
         <h4 className="card-title text-center">
-          {reservation.first_name} {reservation.last_name} : Party of{" "}
+          {reservation.first_name} {reservation.last_name} - Party of{" "}
           {reservation.people}
         </h4>
         <p className="card-text text-center">
@@ -39,7 +56,7 @@ const Reservation = ({ reservation }) => {
           <strong>Date:</strong> {reservation.reservation_date}
         </p>
         <p className="card-text text-center">
-          <strong>Time:</strong> {reservation.reservation_time}
+          <strong>Time:</strong> {twelveHourTime(reservation.reservation_time)}
         </p>
         <p className="card-text text-center">
           <strong>Status: </strong> {reservation.status.toUpperCase()}
