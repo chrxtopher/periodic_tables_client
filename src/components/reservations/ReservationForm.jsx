@@ -14,6 +14,8 @@ const emptyReservationForm = {
   reservation_date: "",
   reservation_time: "",
   people: "",
+  birthday: false,
+  anniversary: false,
 };
 
 const ReservationForm = () => {
@@ -48,6 +50,20 @@ const ReservationForm = () => {
     setFormData({
       ...formData,
       [event.target.name]: event.target.value,
+    });
+  };
+
+  const handleAnniversaryChange = () => {
+    setFormData({
+      ...formData,
+      anniversary: !formData.anniversary,
+    });
+  };
+
+  const handleBirthdayChange = () => {
+    setFormData({
+      ...formData,
+      birthday: !formData.birthday,
     });
   };
 
@@ -170,6 +186,37 @@ const ReservationForm = () => {
                 required
               />
               <small className="m-2">Between 10:30 AM - 9:30 PM</small>
+            </div>
+          </div>
+          <div className="form-check row mb-3 ml-2">
+            <div className="col">
+              <input
+                type="checkbox"
+                name="birthday"
+                id="birthday"
+                onChange={handleBirthdayChange}
+                className="form-check-input checkbox-lrg"
+                value=""
+              />
+              <label className="form-check-label ml-2 mb-1" htmlFor="birthday">
+                Birthday
+              </label>
+            </div>
+            <div className="col">
+              <input
+                type="checkbox"
+                name="anniversary"
+                id="anniversary"
+                onChange={handleAnniversaryChange}
+                className="form-check-input checkbox-lrg"
+                value=""
+              />
+              <label
+                className="form-check-label ml-2 mb-1"
+                htmlFor="anniversary"
+              >
+                Anniversary
+              </label>
             </div>
           </div>
         </div>
