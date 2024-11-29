@@ -14,11 +14,11 @@ const Layout = () => {
   return (
     <>
       <div className="container-fluid">
-        <div className="row">
-          <div className="col-md-2 side-bar min-vh-100">
+        <div className="col p-0">
+          <div className="row">
             <Menu />
           </div>
-          <div className="col-md">
+          <div className="row">
             <Outlet />
           </div>
         </div>
