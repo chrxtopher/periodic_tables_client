@@ -79,7 +79,6 @@ const ReservationForm = () => {
     const abortController = new AbortController();
     try {
       if (reservation_id) {
-        setFormData({ ...formData, updated_at: new Date() });
         await updateReservation(formData, abortController.signal);
         setFormData({ ...emptyReservationForm });
         navigateTo(`/dashboard?date=${formData.reservation_date}`);
