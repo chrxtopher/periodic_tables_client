@@ -142,6 +142,15 @@ export async function clearTable(table_id, reservation_id) {
   return await fetchJson(url, options);
 }
 
+export async function deleteTable(table_id) {
+  const url = `${API_BASE_URL}/tables/${table_id}`;
+  const options = {
+    method: "DELETE",
+    headers,
+  };
+  return await fetchJson(url, options);
+}
+
 export async function updateReservationStatus(reservation, signal) {
   const url = `${API_BASE_URL}/reservations/${reservation.reservation_id}/status`;
   const options = {
