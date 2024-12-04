@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { clearTable } from "../../utility/api";
+import { clearTable, deleteTable } from "../../utility/api";
 import ErrorAlert from "../errors/ErrorAlert";
 
 const Table = ({ table }) => {
@@ -19,6 +19,21 @@ const Table = ({ table }) => {
     }
   };
 
+  const handleDeleteTable = async (table_id) => {
+    if (
+      window.confirm(
+        "Confirm the deletion of this table, this can not be undone."
+      )
+    ) {
+      try {
+        await deleteTable(table_id);
+        navigateTo(0);
+      } catch (error) {
+        setError(error);
+      }
+    }
+  };
+
   return (
     <div>
       <ErrorAlert error={error} />
@@ -28,19 +43,26 @@ const Table = ({ table }) => {
           <p className="card-text text-center">
             <strong>Capacity:</strong> {table.capacity}
           </p>
-          <p className="text-center" data-table-id-status={`${table.table_id}`}>
-            {status.toUpperCase()}
-          </p>
+          <p className="text-center">{status.toUpperCase()}</p>
           <div className="d-flex justify-content-center">
             {table.reservation_id && (
               <button
-                type="submit"
+                type="button"
                 onClick={() =>
                   handleClearTable(table.table_id, table.reservation_id)
                 }
                 className="btn btn-primary border border-dark shadow"
               >
                 Clear
+              </button>
+            )}
+            {!table.reservation_id && (
+              <button
+                type="button"
+                onClick={() => handleDeleteTable(table.table_id)}
+                className="btn btn-danger border border-dark shadow"
+              >
+                Delete
               </button>
             )}
           </div>
